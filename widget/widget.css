@@ -1,0 +1,534 @@
+:root {
+    --widget-primary-text: rgba(0, 0, 0, 1);
+    --widget-secondary-text: rgba(51, 51, 51, 1);
+    --widget-primary-background: rgba(255, 255, 255, 1);
+    --widget-secondary-background: rgba(8, 57, 99, 1);
+    --widget-client-message: rgba(249, 194, 62, 1);
+    --widget-client-text: rgba(51, 51, 51, 1);
+    --widget-manager-message: rgba(42, 182, 255, 1);
+    --widget-manager-text: rgba(255, 255, 255, 1);
+    --widget-form-text: rgba(0, 0, 0, 1);
+    --widget-form-background: rgba(255, 255, 255, 1);
+}
+
+#widgetBlock, #widgetBlock *, #formWrapper, #formBlock, #formBlock *, #formBlock section *, #widgetMessage, #closeForm, #sendForm, .opened-widget, #messageDialog, #widgetDialogBottom, #typing-indicator, .loader {
+    all: initial;
+    transition: all 0.5s ease !important;
+    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Lucida Grande", Helvetica, Arial, sans-serif !important;
+    font-size: large !important;
+    -moz-user-select: none !important;
+    -webkit-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+#widgetBlock {
+    position: fixed !important;
+    width: 400px !important;
+    min-height: 1em !important;
+    height: 40px;
+    bottom: 0 !important;
+    right: 30px !important;
+    cursor: pointer !important;
+    background-color: var(--widget-primary-background);
+    backdrop-filter: blur(15px) !important;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    z-index: 10000 !important;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    transition: all 0.5s ease !important;
+}
+
+.opened-widget{
+    height: 500px !important;
+    cursor: default !important;
+    transition: all 0.5s ease !important;
+}
+
+#managerPic {
+    width: 1.5em !important;
+    border-radius: 100% !important;
+    cursor: pointer !important;
+    margin: 5px 0 0 5px !important;
+}
+
+#managerLargePic {
+    height: 90px !important;
+    border-radius: 100% !important;
+    cursor: default !important;
+}
+
+#managerName {
+    color: var(--widget-primary-text);
+    cursor: pointer !important;
+    line-height: 1.5em !important;
+    bottom: 5px !important;
+    position: relative !important;
+    left: 5px !important;
+}
+
+#managerNameTitle {
+    cursor: default !important;
+    font-size: larger !important;
+    position: absolute !important;
+    margin: 10px 20px 0 !important;
+}
+
+#managerTitle {
+    cursor: default !important;
+    font-size: large !important;
+    position: absolute !important;
+    margin: 40px 20px !important
+}
+
+#online-status {
+    font-size: medium !important;
+    position: absolute !important;
+    margin: 65px 40px !important;
+    color: #1ee26c !important;
+    text-transform: uppercase !important;
+}
+
+#online-status:before {
+    content: '' !important;
+    background-color: #1ee26c !important;
+    position: absolute !important;
+    left: -20px !important;
+    width: 15px !important;
+    height: 15px !important;
+    border-radius: 100% !important;
+    top: 2px !important;
+}
+
+#widgetDialogHeader {
+    color: var(--widget-primary-text) !important;
+    width: calc(100% - 20px) !important;
+    height: 100px !important;
+    position: absolute !important;
+    padding: 30px !important;
+    left: 0 !important;
+    top: 0 !important;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    line-height: 2em !important;
+}
+
+#messageDialog {
+    cursor: default !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 140px !important;
+    bottom: 80px !important;
+    display: block !important;
+    overflow: auto !important;
+}
+
+#final-message {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.51);
+    width: calc(100% - 100px) !important;
+    height: calc(100% - 100px) !important;
+    text-align: center !important;
+    padding: 50px !important;
+}
+
+.dialogMessageContainer {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    clear: both !important;
+}
+
+.dialogMessageContainer:last-child{
+    margin-bottom: 40px;
+}
+
+.dialogManagerMessage {
+    display: block !important;
+    cursor: default !important;
+    background-color: var(--widget-manager-message);
+    color: var(--widget-manager-text);
+    border-radius: 25px !important;
+    padding: 10px 20px !important;
+    position: relative !important;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    float: left !important;
+    font-size: medium !important;
+    text-align: left !important;
+}
+
+.dialogClientMessage {
+    display: block !important;
+    cursor: default !important;
+    background-color: var(--widget-client-message);
+    color: var(--widget-client-text);
+    border-radius: 25px !important;
+    padding: 10px 20px !important;
+    position: relative !important;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    font-size: medium !important;
+    float: right !important;
+    text-align: right !important;
+}
+
+.dialogManagerMessage a {
+    cursor: pointer !important;
+    color: #1b1b22 !important;
+}
+
+#managerMessage {
+    color: var(--widget-primary-text);
+    cursor: pointer !important;
+    line-height: 1.5em !important;
+    font-size: medium !important;
+    bottom: 5px !important;
+    position: relative !important;
+    left: 5px !important;
+}
+
+#typing-indicator{
+    position: absolute !important;
+    width: 100% !important;
+    bottom: 80px !important;
+    display: none;
+    height: 30px !important;
+}
+#typing-indicator *{
+    position: relative !important;
+    width: 50px;
+    height: 50px;
+    display: block !important;
+    margin-left: calc(50% - 6px) !important;
+}
+
+.show{
+    display: block !important;
+}
+
+#widgetDialogBottom {
+    position: absolute !important;
+    width: calc(100% - 30px) !important;
+    bottom: 0 !important;
+    padding: 15px !important;
+    height: 50px !important;
+    background-color: var(--widget-secondary-background);
+}
+
+#widgetMessage {
+    font-size: 1.17em !important;
+    background-color: #ffffff !important;
+    -moz-user-select: initial !important;
+    -webkit-user-select: initial !important;
+    -ms-user-select: initial !important;
+    width: calc(100% - 70px) !important;
+    height: 100% !important;
+    padding: 0 50px 0 20px !important;
+    border-radius: 15px !important;
+}
+
+#enter-icon {
+    padding: 5px !important;
+    border-radius: 10px !important;
+    background-color: #f81258 !important;
+    float: right !important;
+    height: 30px !important;
+    width: 30px !important;
+    position: absolute !important;
+    margin-top: 5px !important;
+    right: 20px !important;
+    cursor: pointer !important;
+}
+
+#enter-icon * {
+    cursor: pointer !important;
+    height: 30px;
+    margin-left: 4px;
+}
+
+#formWrapper {
+    position: fixed !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(5px) !important;
+    z-index: 10100 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+}
+
+#formBlock {
+    position: fixed !important;
+    background-color: var(--widget-form-background);
+    backdrop-filter: blur(5px) !important;
+    max-width: 400px !important;
+    height: 400px !important;
+    margin: 100px calc(50% - 200px) !important;
+    padding: 20px !important;
+    border-radius: 15px !important;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+}
+
+#closeForm {
+    transition: none !important;
+    cursor: pointer !important;
+    filter: grayscale(1) !important;
+    width: 35px !important;
+    height: 35px !important;
+    right: -17px !important;
+    position: absolute !important;
+    top: -17px !important;
+}
+
+#closeForm:hover {
+    transition: none !important;
+    filter: grayscale(0) !important;
+}
+
+#closeWidget {
+    transition: none !important;
+    float: right !important;
+    width: 35px !important;
+    height: 35px !important;
+    cursor: pointer !important;
+    margin-top: -47px;
+    margin-right: -7px;
+}
+
+#closeWidget:hover {
+    transition: none !important;
+}
+
+#formBlock h2 {
+    color: var(--widget-form-text);
+    font-size: 2em !important;
+    font-weight: 100 !important;
+    cursor: default !important;
+}
+
+#formBlock section {
+    position: absolute !important;
+    bottom: 60px !important;
+    left: 20px !important;
+    right: 20px !important;
+    line-height: 2em !important;
+}
+
+#formBlock section label {
+    cursor: default !important;
+    color: var(--widget-form-text);
+}
+
+#formBlock section label:hover {
+    color: var(--widget-form-text);
+}
+
+#formBlock section input {
+    width: 200px !important;
+    float: right !important;
+    border: 1px solid #616161 !important;
+    background-color: rgba(205, 205, 205, 0.5) !important;
+    color: var(--widget-form-text);
+    padding: 0 5px !important;
+    margin-top: 5px !important;
+}
+
+#formBlock section input:hover {
+    border: 1px solid #373737 !important;
+    background-color: rgba(205, 205, 205, 0.8) !important;
+}
+
+#formBlock br {
+    clear: both !important;
+}
+
+#sendForm {
+    position: absolute !important;
+    right: 10px !important;
+    bottom: 10px !important;
+    font-size: large !important;
+    background-color: rgba(55, 55, 55, 0.71) !important;
+    color: #FFFFFF !important;
+    border-radius: 10px !important;
+    padding: 5px !important;
+    cursor: pointer !important;
+}
+
+#sendForm:hover {
+    background-color: rgb(155, 155, 155) !important;
+}
+
+@media screen and (max-width: 500px) {
+    #widgetBlock {
+        display: block !important;
+        position: fixed !important;
+        width: 100% !important;
+        min-height: 1em !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        left: 0 !important;
+        cursor: pointer !important;
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+        padding: 10px 5px !important;
+        z-index: 10000 !important;
+    }
+
+    .opened-widget {
+        height: 100% !important;
+    }
+
+    .opened-widget #closeWidget {
+        margin-top: 20px;
+        margin-right: 40px;
+    }
+
+    #formBlock {
+        display: block !important;
+        position: absolute !important;
+        width: auto !important;
+        max-width: none !important;
+        height: calc(100% - 40px) !important;
+        margin: 0 !important;
+        padding: 20px !important;
+        border-radius: 0 !important;
+    }
+
+    #formBlock h2 {
+        display: block !important;
+        margin: 20px !important;
+        font-size: 1.5em !important;
+        position: relative !important;
+    }
+
+    #formBlock section {
+        position: relative !important;
+        display: block !important;
+        margin-top: 50px !important;
+        margin-right: 20px !important;
+    }
+
+    #sendForm {
+        position: relative !important;
+        width: calc(100% - 40px) !important;
+        margin: 20px !important;
+        height: 40px !important;
+        text-align: center !important;
+    }
+
+    #widgetDialogHeader {
+        width: calc(100% - 30px) !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+    }
+
+    #closeWidget {
+        transition: none !important;
+        float: right !important;
+        width: 40px !important;
+        height: 40px !important;
+        cursor: pointer !important;
+        margin-top: -10px;
+        margin-right: 30px;
+    }
+
+    #closeForm {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    #widgetDialogBottom {
+        margin-left: -5px !important;
+        width: calc(100% - 40px) !important;
+    }
+}
+
+
+.loader:before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -25px;
+    height: 12px;
+    width: 12px;
+    border-radius: 12px;
+    -webkit-animation: loader-g 1s ease-in-out infinite;
+    animation: loader-g 1s ease-in-out infinite;
+}
+
+.loader{
+    position: relative !important;
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 12px !important;
+    -webkit-animation: loader-m 1s ease-in-out infinite !important;
+    animation: loader-m 1s ease-in-out infinite !important;
+}
+
+.loader:after{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 25px;
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+    -webkit-animation: loader-d 1s ease-in-out infinite;
+    animation: loader-d 1s ease-in-out infinite;
+}
+
+@-webkit-keyframes loader-g{
+    0%{background-color: rgba(42, 182, 255, 0.2);}
+    25%{background-color: rgb(42, 182, 255);}
+    50%{background-color: rgba(42, 182, 255, 0.2);}
+    75%{background-color: rgba(42, 182, 255, 0.2);}
+    100%{background-color: rgba(42, 182, 255, 0.2);}
+}
+@keyframes loader-g{
+    0%{background-color: rgba(42, 182, 255, 0.2);}
+    25%{background-color: rgb(42, 182, 255);}
+    50%{background-color: rgba(42, 182, 255, 0.2);}
+    75%{background-color: rgba(42, 182, 255, 0.2);}
+    100%{background-color: rgba(42, 182, 255, 0.2);}
+}
+
+@-webkit-keyframes loader-m{
+    0%{background-color: rgba(42, 182, 255, 0.2);}
+    25%{background-color: rgba(42, 182, 255, 0.2);}
+    50%{background-color: rgb(42, 182, 255);}
+    75%{background-color: rgba(42, 182, 255, 0.2);}
+    100%{background-color: rgba(42, 182, 255, 0.2);}
+}
+@keyframes loader-m{
+    0%{background-color: rgba(42, 182, 255, 0.2);}
+    25%{background-color: rgba(42, 182, 255, 0.2);}
+    50%{background-color: rgb(42, 182, 255);}
+    75%{background-color: rgba(42, 182, 255, 0.2);}
+    100%{background-color: rgba(42, 182, 255, 0.2);}
+}
+
+@-webkit-keyframes loader-d{
+    0%{background-color: rgba(42, 182, 255, 0.2);}
+    25%{background-color: rgba(42, 182, 255, 0.2);}
+    50%{background-color: rgba(42, 182, 255, 0.2);}
+    75%{background-color: rgb(42, 182, 255);}
+    100%{background-color: rgba(42, 182, 255, 0.2);}
+}
+@keyframes loader-d{
+    0%{background-color: rgba(42, 182, 255, 0.2);}
+    25%{background-color: rgba(42, 182, 255, 0.2);}
+    50%{background-color: rgba(42, 182, 255, 0.2);}
+    75%{background-color: rgb(42, 182, 255);}
+    100%{background-color: rgba(42, 182, 255, 0.2);}
+}

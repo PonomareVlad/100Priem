@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Partner landing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700|Roboto:100,300,400,700&amp;subset=cyrillic,cyrillic-ext"
+          rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/main.js"></script>
+</head>
+<body>
+<header class="header">
+    <!-- LOGO -->
+    <a href="index.html" class="logo"><span>100% Прием</span>
+        <p>Партнерская программа</p></a>
+    <!-- LOGO END -->
+    <!-- NAVIGATION BAR (Область со ссылками в верхней полоске меню -->
+    <nav class="nav" id="nav-bar">
+        <a href="index.html" class="nav-itm"><img src="assets/images/home.png">Главная</a>
+        <a href="javascript:void(0)" class="nav-itm" onclick="showReg();" id="reg-flip"><img
+                src="assets/images/reg.png">Регистрация</a>
+        <a href="javascript:void(0)" class="nav-itm" id="auth-flip"><img
+                src="assets/images/enter.png">Вход</a>
+        <a href="faq.html" class="nav-itm"><img src="assets/images/faq.png">Вопросы и ответы</a>
+    </nav>
+    <!-- NAVIGATION BAR END -->
+    <!-- MENU-BUTTON (Кнопка открывающая область со ссылками, видна только в мобильной адаптации) -->
+    <div class="menu" onclick="showNavBar();"><img src="assets/images/menu.png"></div>
+    <!-- MENU-BUTTON END -->
+</header>
+<div class="shadow" id="shadow"></div>
+<main class="main background" id="main">
+</main>
+<!-- FOOTER (Нижняя часть страницы с информацией) -->
+<footer>
+    <!-- LOGO (Логотип) -->
+    <a href="index.html" class="logo footer-logo">
+        <span>100% Прием</span>
+        <p>Партнерская программа</p>
+    </a>
+    <!-- SOCIAL BUTTONS (Ссылки на соц. сети) -->
+    <nav class="share">
+        <a href="https://facebook.com/PonomareVlad" target="_blank"><img src="assets/images/share-fb.png"></a>
+        <a href="https://twitter.com/PonomareVlad" target="_blank"><img src="assets/images/share-tw.png"></a>
+        <a href="https://linkedin.com/in/PonomareVlad" target="_blank"><img src="assets/images/share-li.png"></a>
+        <a href="skype:PonomareVlad." target="_blank"><img src="assets/images/share-sk.png"></a>
+        <a href="https://plus.google.com/+%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D1%81%D0%BB%D0%B0%D0%B2%D0%9F%D0%90" target="_blank"><img src="assets/images/share-gp.png"></a>
+        <a href="https://vk.com/ponomarevlad" target="_blank"><img src="assets/images/share-vk.png"></a>
+    </nav>
+    <!-- SUBSCRIBE (Поле ввода для подписки на почтовые рассылки) -->
+    <div class="subscribe">
+        <label for="subscribe">Будьте вкурсе наших новостей</label><br>
+        <input type="email" id="subscribe"><img onclick="subscribe();" src="assets/images/email.png">
+    </div>
+    <section class="footer">
+        <!-- AUTH (Поля для авторизации) -->
+        <div class="auth-form">
+            <input type="text" id="login-bottom" placeholder="Логин">
+            <input type="password" id="password-bottom" placeholder="Пароль">
+            <button class="reg-button2 auth-button" onclick="sendLogin('bottom');">Вход/Регистрация</button>
+        </div>
+        <!-- ADRESS (Адреса и контакты) -->
+        <div class="address">
+            <div class="address-item">
+                <div class="address-title">Адрес</div>
+                <div class="address-content">Невский пр-кт, 1, Санкт-Петербург, 195067</div>
+            </div>
+            <div class="address-item">
+                <div class="address-title">Телефон</div>
+                <div class="address-content">89009009093</div>
+            </div>
+            <div class="address-item">
+                <div class="address-title">e-mail</div>
+                <div class="address-content">hello@partner.ru</div>
+            </div>
+        </div>
+        <!-- COPYRIGHT (Юр. лицо) -->
+        <p class="copyright">© ООО Партнер 2016</p>
+    </section>
+</footer>
+<!-- FOOTER END -->
+<script>buildFAQ();</script>
+<script>var widgetConf = {'partnerID': 'test', 'managers': [{}]};</script>
+<script src="widget/widget.js"></script>
+</body>
+</html>
